@@ -1,0 +1,55 @@
+<div style="min-width:160px;height:100px;" class="cmd #history# tooltips cmd-widget cursor container-fluid" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
+ 	<!-- Info Widget
+		Basé sur les widget de 	: 
+		Mise à jour 			: JAG 20190330 : Mise à jour pour la version V3.3
+--> 
+	<div class="row">
+		<center>
+		<div class="cmdName" id="cmdName#id#" style="font-weight: bold;font-size : 10px; #hideCmdName#;">#name_display# </div>
+		<div style="font-size: 2.5em;margin-top:5px;" class="iconCmd"></div>
+        <div class='state' style ="margin-top:-30px;margin-left:100px;">
+          <div class='label label-info' style="font-size: 11px;">#state#</div><br>
+        </div>
+      	<!-- Historique -->
+      		<div style="#displayHistory# font-size : 0.8em;margin-top:10px;">
+      			<span title="Min" class="tooltips">#minHistoryValue#</span>|<span title="Moy" class="tooltips">#averageHistoryValue#</span>|<span title="Max" class="tooltips">#maxHistoryValue#</span> <i class="#tendance#"></i>
+      		</div>
+		</center>
+	</div>
+  	<script>
+ 		jeedom.cmd.update['#id#'] = function(_options){
+          // Options de personnalisation avec valeur par defaut
+				// Paramètre "sizehw" : à déclarer en pixels - 80 maxi
+              			var srcImgHeight 	= (is_numeric('#sizeh#')) 	? parseFloat('#sizeh#') 	: 100;
+              			var srcImgWidth		= (is_numeric('#sizew#')) 	? parseFloat('#sizew#') 	: 110;
+          	// Paramétrage des images
+              			var srcImgURL 		= 'plugins/widget/core/template/dashboard/cmd.info.numeric.Biroute_vent/';
+          		// Variable Image
+          				var srcPictureID;
+          	// Update
+          		//var State;
+          				var State = parseFloat(_options.display_value);
+                   if (State >= 0 && State <= 9) {
+                        srcPictureID 	= "manche-0";
+                   } else if (State > 9 && State <= 36) {
+                       	srcPictureID 	= "manche-45";
+                   } else if (State > 36 && State <= 46) {
+                     	srcPictureID 	= "manche-90";
+                   } else if (State > 46) {
+                       	srcPictureID 	= "manche-over";
+                   } else {
+                       	srcPictureID 	= "error";
+                   }  
+           	// Update IMG + gestion erreur
+          		if (srcPictureID == "error"){
+                   		$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcPictureID + '.png" style="height:50 px;width:50px;">');
+                } else {
+                      	$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL + srcPictureID + '.png" >');
+            	}
+          		$('.cmd[data-cmd_uid=#uid#] .label-info').html(State+'#unite#');
+		     	$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
+          
+		}
+		jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});            
+    </script>
+</div>
