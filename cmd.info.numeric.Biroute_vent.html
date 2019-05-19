@@ -1,21 +1,25 @@
-<div style="width:150px;height:80px;" class="cmd #history# tooltips cmd-widget cursor container-fluid" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
+<div style="width:150px;min-height:80px;" class="cmd #history# tooltips cmd-widget cursor container-fluid" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	: 
-        Mise à jour 			: JAG 20190330 : Mise à jour pour la version V3.3
+        Mise à jour 			: JAG 20190519 : Nettoyage du code
     -->
-    <div class="cmdName" id="cmdName#id#" style="font-weight: bold;font-size : 10px; #hideCmdName#;">#name_display#</div>
+    <div class="title #hide_name#">
+        <div class="cmdName">#name_display#</div>
+    </div>
     <div class="row">
-        <center>
-            <div style="float:left;width:50%;" class="iconCmd#id#"></div>
-            <div style="float:left;width:50%;text-align:left">
-                <div class='label label-info#id#' style="font-size: 1em;font-weight: bold;display: block"></div>
-                <div class="cmdStats #hide_history#" style="line-height:10px;font-size: 0.7em;font-weight: bold;display: inline-block;text-align: justify;#displayHistory#">
-                    <span title='Min' class="tooltips left">Min : </span><span style="float:right;">#minHistoryValue# #unite#</span><br/>
-                    <span title='Moy' class="tooltips">Moy: </span><span style="float:right;">#averageHistoryValue# #unite#</span><br/>
-                    <span title='Max' class="tooltips">Max: </span><span style="float:right;">#maxHistoryValue# #unite#</span><br/> <i class="#tendance#"></i>
-                </div>
-            </div>  
-        </center>
+        <div style="float:left" class="iconCmd#id#"></div>
+        <div>
+            <div class="value">
+                <span class="value#id# timeCmd label label-default value"></span>
+            </div>
+            <!-- Historique -->
+            <div class="cmdStats #hide_history#" style="#displayHistory# font-size : 10px;">
+                <span title="Min" class="tooltips">Min : </span><span style="float:right;">#minHistoryValue# #unite#</span><br/>
+                <span title='Moy' class='tooltips'>Moy : </span><span style="float:right;">#averageHistoryValue# #unite#</span><br/>
+                <span title='Max' class='tooltips'>Max : </span><span style="float:right;">#maxHistoryValue# #unite#</span><br/>
+                <i class="#tendance#"></i> 
+            </div>
+        </div>
     </div>
 </div>
 <script>
@@ -48,7 +52,7 @@
             } else {
                 $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL + srcPictureID + '.png" >');
             }
-        $('.cmd[data-cmd_uid=#uid#] .label-info#id#').html(State+' '+'#unite#');
+        $('.cmd[data-cmd_id=#id#] .value#id#').empty().append(_options.display_value+' '+'#unite#'); 
         $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
     }
     jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});            
