@@ -1,7 +1,7 @@
 <div style="min-width:130px;min-height:80px;margin-right:10px;margin-left:5px;" class="cmd #history# tooltips cmd-widget cursor container-fluid" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	:
-        Mise à jour 			: JAG 20190519 : Nettoyage du code
+        Mise à jour 			: JAG 20190604: Reprise du code suite ajout taille du texte 
     -->
     <div class="row">
         <div class="title #hide_name#">
@@ -9,14 +9,14 @@
         </div>
         <div class="iconCmd#id#" style="float:left"></div>
         <div style="display:inline-block;">
-            <span class="value#id# timeCmd label label-default value"></span>
+            <span class="value#id# timeCmd label label-default value Stats#id#"></span>
             <!-- Historique -->
-                <div class="cmdStats #hide_history#" style="#displayHistory# font-size : 10px;text-align: left;">
+                <div class="cmdStats #hide_history# Stats_hist#id#" style="#displayHistory# text-align: left;">
                     <span title="Min" style="float:left;">Min : #minHistoryValue# #unite#</span><br/>
                     <span title="Moy" style="float:left;">Moy : #averageHistoryValue# #unite#</span><br/>
                     <span title="Max" style="float:left;">Max : #maxHistoryValue# #unite#</span><br/>
                     <i class="#tendance#"></i>
-            </div>        
+                </div>
         </div>
     </div>       
 <script>
@@ -43,13 +43,18 @@
                     srcPictureID 	= "error";
                 }  
         // Update IMG + gestion erreur
-            if (srcPictureID == "error"){
-                $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL + srcPictureID + '.png" style="height:50 px;width:50px;">');
-            } else {
-                $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL + srcPictureID + '.png" >');
-            }
-        $('.cmd[data-cmd_id=#id#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
-        $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
+                if (srcPictureID == "error"){
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL + srcPictureID + '.png" style="height:50 px;width:50px;">');
+                } else {
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL + srcPictureID + '.png" >');
+                }
+            $('.cmd[data-cmd_id=#id#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
+            $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
+        //Taille Texte et marge pour la valeur
+            $('.cmd[data-cmd_id=#id#] .Stats#id#').css('font-size',srcFontSize);
+            $('.cmd[data-cmd_id=#id#] .Stats#id#').css('line-height',srcMargSize);
+        //Taille Texte pour l'historique
+            $('.cmd[data-cmd_id=#id#] .Stats_hist#id#').css('font-size',srcFontSizeStat);
     }
     jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});           
 </script>
