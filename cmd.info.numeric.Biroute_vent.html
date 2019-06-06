@@ -1,24 +1,26 @@
 <div style="min-width:130px;min-height:80px;margin-right:10px;margin-left:5px;" class="cmd #history# tooltips cmd-widget cursor container-fluid" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	:
-        Mise à jour 			: JAG 20190604: Reprise du code suite ajout taille du texte 
+        Mise à jour 			: JAG 20190606: Correction Bug safari 
     -->
-    <div class="row">
+    <div class="row" style="width=100%">
         <div class="title #hide_name#">
-            <div class="cmdName" style="#hideCmdName#">#name_display#</div>
+            <div class="cmdName"style="#hideCmdName#">#name_display#</div>
         </div>
-        <div class="iconCmd#id#" style="float:left"></div>
-        <div style="display:inline-block;">
+    </div>
+    <div class="iconCmd#id#" style="width:35%;float:left"></div>
+    <div style="display:inline-block;width=55%">
+        <div class="value">
             <span class="value#id# timeCmd label label-default value Stats#id#"></span>
             <!-- Historique -->
                 <div class="cmdStats #hide_history# Stats_hist#id#" style="#displayHistory# text-align: left;">
                     <span title="Min" style="float:left;">Min : #minHistoryValue# #unite#</span><br/>
                     <span title="Moy" style="float:left;">Moy : #averageHistoryValue# #unite#</span><br/>
                     <span title="Max" style="float:left;">Max : #maxHistoryValue# #unite#</span><br/>
-                    <i class="#tendance#"></i>
+                    <i class="#tendance#"></i> 
                 </div>
         </div>
-    </div>       
+    </div>      
 <script>
     jeedom.cmd.update['#id#'] = function(_options){
         // Options de personnalisation avec valeur par defaut
