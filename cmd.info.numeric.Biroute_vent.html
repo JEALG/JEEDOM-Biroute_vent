@@ -53,7 +53,7 @@
                 if (srcPictureID == "error"){
                     $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL + srcPictureID + '.png" style="height:50 px;width:50px;">');
                 } else {
-                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +rcPictureID +'.png'+'" '+srcImgSize+'>');
+                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcPictureID +'.png'+'" '+srcImgSize+'>');
                 }
             $('.cmd[data-cmd_id=#id#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
             $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
