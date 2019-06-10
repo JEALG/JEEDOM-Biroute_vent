@@ -1,7 +1,7 @@
 <div style="min-width:220px;min-height:80px;margin-right:10px;margin-left:5px;" class="cmd #history# tooltips cmd-widget cursor container-fluid" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	:
-        Mise à jour 			: JAG 20190608: Correction Bug safari 
+        Mise à jour 			: JAG 20190610 : Modification taille image 
     -->
     <div class="row" style="width=100%">
         <div class="title #hide_name#">
@@ -34,6 +34,9 @@
                 var srcFontSize     = ('#font_size#'!='#'+'font_size#') ? "#font_size#": "11px";
                 var srcMargSize     = '#marge_size#';
                 var srcFontSizeStat = ('#font_size_hist#'!='#'+'font_size_hist#') ? "#font_size_hist#": "10px";
+            // Paramètrage du logo ERREUR
+                var srcImglogoER	= ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "oups";
+                var srcImglogoER_T 	= ('#logo_error_type#'!='#'+'logo_error_type#') ? "#logo_error_type#" : "png";
             // Variable Image
                 var srcPictureID;
         // Update
@@ -47,11 +50,11 @@
                 } else if (State > 46) {
                     srcPictureID 	= "manche-over";
                 } else {
-                    srcPictureID 	= "error";
+                    srcPictureID 	= srcImglogoER;
                 }  
         // Update IMG + gestion erreur
                 if (srcPictureID == "error"){
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL + srcPictureID + '.png" style="height:50 px;width:50px;">');
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL + srcPictureID + '.'+srcImglogoER_T+'" style="height:50 px;width:50px;">');
                 } else {
                     $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcPictureID +'.png'+'" '+srcImgSize+'>');
                 }
