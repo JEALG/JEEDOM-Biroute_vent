@@ -8,7 +8,7 @@
             <div class="cmdName"style="#hideCmdName#">#name_display#</div>
         </div>
     </div>
-    <div class="iconCmd#id#" style="width:45%;float:left"></div>
+    <div class="iconCmd#id#" style="height:100%;width:45%;float:left"></div>
     <div style="display:inline-block;width=55%">
         <div class="value">
             <span class="value#id# timeCmd label label-default value Stats#id#"></span>
@@ -54,9 +54,9 @@
                 }  
         // Update IMG + gestion erreur
                 if (srcPictureID == "error"){
-                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL + srcPictureID + '.'+srcImglogoER_T+'" '+srcImgSize+'>');
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL + srcPictureID + '.'+srcImglogoER_T+'" '+srcImgSize+'>');
                 } else {
-                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcPictureID +'.png'+'" '+srcImgSize+'>');
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL + srcPictureID + '.png" >');
                 }
             $('.cmd[data-cmd_id=#id#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
             $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
