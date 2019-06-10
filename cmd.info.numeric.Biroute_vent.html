@@ -54,7 +54,7 @@
                 }  
         // Update IMG + gestion erreur
                 if (srcPictureID == "error"){
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL + srcPictureID + '.'+srcImglogoER_T+'" style="height:50 px;width:50px;">');
+                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL + srcPictureID + '.'+srcImglogoER_T+'" '+srcImgSize+'>');
                 } else {
                     $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcPictureID +'.png'+'" '+srcImgSize+'>');
                 }
