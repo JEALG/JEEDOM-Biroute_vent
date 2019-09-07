@@ -1,7 +1,7 @@
 <div style="min-width:220px;min-height:80px;margin-right:10px;margin-left:5px;" class="cmd #history# tooltips cmd-widget cursor container-fluid" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	:
-        Mise à jour 			: JAG 20190610 : Modification taille image 
+        Mise à jour 			: JAG 20190907 : Normalisation nom images => Merci à mich0111
     -->
     <div class="row" style="width=100%">
         <div class="title #hide_name#">
@@ -35,20 +35,20 @@
                 var srcMargSize     = '#marge_size#';
                 var srcFontSizeStat = ('#font_size_hist#'!='#'+'font_size_hist#') ? "#font_size_hist#": "10px";
             // Paramètrage du logo ERREUR
-                var srcImglogoER	= ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "oups";
+                var srcImglogoER	= ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "er_oups1";
                 var srcImglogoER_T 	= ('#logo_error_type#'!='#'+'logo_error_type#') ? "#logo_error_type#" : "png";
             // Variable Image
                 var srcPictureID;
         // Update
                 var State       = parseFloat(_options.display_value);
                 if (State >= 0 && State <= 9) {
-                    srcPictureID 	= "manche-0";
+                    srcPictureID 	= "manche_0";
                 } else if (State > 9 && State <= 36) {
-                    srcPictureID 	= "manche-45";
+                    srcPictureID 	= "manche_45";
                 } else if (State > 36 && State <= 46) {
-                    srcPictureID 	= "manche-90";
+                    srcPictureID 	= "manche_90";
                 } else if (State > 46) {
-                    srcPictureID 	= "manche-over";
+                    srcPictureID 	= "manche_over";
                 } else {
                     srcPictureID 	= srcImglogoER;
                 }  
