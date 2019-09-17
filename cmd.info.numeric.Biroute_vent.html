@@ -1,7 +1,7 @@
 <div style="min-width:220px;min-height:80px;margin-right:10px;margin-left:5px;" class="cmd #history# tooltips cmd-widget cursor container-fluid" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	:
-        Mise à jour 			: JAG 20190610 : Modification taille image 
+        Mise à jour 			: JAG 20190917 : Migration dossier
     -->
     <div class="row" style="width=100%">
         <div class="title #hide_name#">
@@ -29,28 +29,30 @@
                 var srcImgWidth     = (is_numeric('#sizew#')) ? parseFloat('#sizew#') : 50;
                 var srcImgSize      = 'height='+srcImgHeight+'px width='+srcImgWidth+'px';
             // Paramétrage des images
-                var srcImgURL       = 'plugins/widget/core/template/dashboard/cmd.info.numeric.Biroute_vent/';
+                var srcImgURL       = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/vent/';
+                var srcImgURL_ER    = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/error/';
             // Variable Taille Texte et marge
                 var srcFontSize     = ('#font_size#'!='#'+'font_size#') ? "#font_size#": "11px";
                 var srcMargSize     = '#marge_size#';
                 var srcFontSizeStat = ('#font_size_hist#'!='#'+'font_size_hist#') ? "#font_size_hist#": "10px";
             // Paramètrage du logo ERREUR
-                var srcImglogoER	= ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "oups";
+                var srcImglogoER	= ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "er_oups1";
                 var srcImglogoER_T 	= ('#logo_error_type#'!='#'+'logo_error_type#') ? "#logo_error_type#" : "png";
             // Variable Image
                 var srcPictureID;
         // Update
                 var State       = parseFloat(_options.display_value);
                 if (State >= 0 && State <= 9) {
-                    srcPictureID 	= "manche-0";
+                    srcPictureID 	= "ve_manche_0";
                 } else if (State > 9 && State <= 36) {
-                    srcPictureID 	= "manche-45";
+                    srcPictureID 	= "ve_manche_45";
                 } else if (State > 36 && State <= 46) {
-                    srcPictureID 	= "manche-90";
+                    srcPictureID 	= "manche_90";
                 } else if (State > 46) {
-                    srcPictureID 	= "manche-over";
+                    srcPictureID 	= "ve_manche_over";
                 } else {
                     srcPictureID 	= srcImglogoER;
+                    srcImgURL       = srcImgURL_ER;
                 }  
         // Update IMG + gestion erreur
                 if (srcPictureID == "error"){
