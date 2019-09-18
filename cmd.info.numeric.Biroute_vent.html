@@ -1,7 +1,7 @@
 <div style="min-width:220px;min-height:80px;margin-right:10px;margin-left:5px;" class="cmd #history# tooltips cmd-widget cursor container-fluid" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	:
-        Mise à jour 			: JAG 20190917 : Migration dossier
+        Mise à jour 			: JAG 20190918 : Migration uniquement pour core V4
     -->
     <div class="row" style="width=100%">
         <div class="title #hide_name#">
@@ -29,8 +29,8 @@
                 var srcImgWidth     = (is_numeric('#sizew#')) ? parseFloat('#sizew#') : 50;
                 var srcImgSize      = 'height='+srcImgHeight+'px width='+srcImgWidth+'px';
             // Paramétrage des images
-                var srcImgURL       = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/vent/';
-                var srcImgURL_ER    = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/error/';
+                var srcImgURL       = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/vent/';
+                var srcImgURL_ER    = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
             // Variable Taille Texte et marge
                 var srcFontSize     = ('#font_size#'!='#'+'font_size#') ? "#font_size#": "11px";
                 var srcMargSize     = '#marge_size#';
