@@ -61,7 +61,8 @@
                 if (srcPictureID == "error"){
                     $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL + srcPictureID + '.'+srcImglogoER_T+'" '+srcImgSize+'>');
                 } else {
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL +srcImglogo +'-'+ srcPictureID + '.'+ srcImglogoON_T+'" '+srcImgSize+'>');
+                    //$('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL +srcImglogo +'_'+ srcPictureID + '.'+ srcImglogoON_T+'" '+srcImgSize+'>');
+                    $('.cmd[data-cmd_id=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcImglogo +'_'+ srcPictureID +'.'+ srcImglogo_T+'" '+srcImgSize+'>');
                 }
             $('.cmd[data-cmd_id=#id#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
             $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
