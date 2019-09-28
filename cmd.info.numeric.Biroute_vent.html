@@ -25,8 +25,8 @@
     jeedom.cmd.update['#id#'] = function(_options){
         // Options de personnalisation avec valeur par defaut
             // Paramètre "sizehw" : à déclarer en pixels - 80 maxi
-                var srcImgHeight    = (is_numeric('#sizeh#')) ? parseFloat('#sizeh#') : 50;
-                var srcImgWidth     = (is_numeric('#sizew#')) ? parseFloat('#sizew#') : 50;
+                var srcImgHeight    = (is_numeric('#sizeh#')) ? parseFloat('#sizeh#') : 90;
+                var srcImgWidth     = (is_numeric('#sizew#')) ? parseFloat('#sizew#') : 90;
                 var srcImgSize      = 'height='+srcImgHeight+'px width='+srcImgWidth+'px';
             // Paramétrage des images
                 var srcImgURL       = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/vent/';
@@ -61,8 +61,7 @@
                 if (srcPictureID == "error"){
                     $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL + srcPictureID + '.'+srcImglogoER_T+'" '+srcImgSize+'>');
                 } else {
-                    //$('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL +srcImglogo +'_'+ srcPictureID + '.'+ srcImglogoON_T+'" '+srcImgSize+'>');
-                    $('.cmd[data-cmd_id=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcImglogo +'_'+ srcPictureID +'.'+ srcImglogo_T+'" '+srcImgSize+'>');
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcImglogo +'_'+ srcPictureID +'.'+ srcImglogo_T+'" '+srcImgSize+'>');
                 }
             $('.cmd[data-cmd_id=#id#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
             $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
