@@ -35,6 +35,9 @@
                 var srcFontSize     = ('#font_size#'!='#'+'font_size#') ? "#font_size#": "11px";
                 var srcMargSize     = '#marge_size#';
                 var srcFontSizeStat = ('#font_size_hist#'!='#'+'font_size_hist#') ? "#font_size_hist#": "10px";
+            // Valeur du logo
+                var srcImglogo	    = ('#logo#'!='#'+'logo#') ? "#logo#" : "ve_manche2";
+                var srcImglogo_T 	= ('#logo_type#'!='#'+'logo_type#') ? "#logo_type#" : "png";
             // Paramètrage du logo ERREUR
                 var srcImglogoER	= ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "er_oups1";
                 var srcImglogoER_T 	= ('#logo_error_type#'!='#'+'logo_error_type#') ? "#logo_error_type#" : "png";
@@ -43,13 +46,13 @@
         // Update
                 var State       = parseFloat(_options.display_value);
                 if (State >= 0 && State <= 9) {
-                    srcPictureID 	= "ve_manche_0";
+                    srcPictureID 	= "0";
                 } else if (State > 9 && State <= 36) {
-                    srcPictureID 	= "ve_manche_45";
+                    srcPictureID 	= "45";
                 } else if (State > 36 && State <= 46) {
-                    srcPictureID 	= "ve_manche_90";
+                    srcPictureID 	= "90";
                 } else if (State > 46) {
-                    srcPictureID 	= "ve_manche_over";
+                    srcPictureID 	= "over";
                 } else {
                     srcPictureID 	= srcImglogoER;
                     srcImgURL       = srcImgURL_ER;
@@ -58,7 +61,7 @@
                 if (srcPictureID == "error"){
                     $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL + srcPictureID + '.'+srcImglogoER_T+'" '+srcImgSize+'>');
                 } else {
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL + srcPictureID + '.png" '+srcImgSize+'>');
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL +srcImglogo +'-'+ srcPictureID + '.'+ srcImglogoON_T+" '+srcImgSize+'>');
                 }
             $('.cmd[data-cmd_id=#id#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
             $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
