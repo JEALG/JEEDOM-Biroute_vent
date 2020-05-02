@@ -1,11 +1,12 @@
 <div style="min-width:220px;min-height:80px;margin-right:10px;margin-left:5px;" class="cmd #history# tooltips cmd-widget cursor container-fluid" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
-        Basé sur les widget de 	:
-        Mise à jour 			: JAG 20190928 : modification type image
-    -->
+        Widget de           : JAG
+        Widget pour le Core : V4
+        Mise à jour         : JAG 20200502 => Ajout Version Core
+	-->
     <div class="row" style="width=100%">
         <div class="title #hide_name#">
-            <div class="cmdName"style="#hideCmdName#">#name_display#</div>
+            <div class="cmdName" style="#hideCmdName#">#name_display#</div>
         </div>
     </div>
     <div class="iconCmd#id#" style="height:100%;width:45%;float:left"></div>
@@ -13,64 +14,69 @@
         <div class="value">
             <span class="value#id# timeCmd label label-default value Stats#id#"></span>
             <!-- Historique -->
-                <div class="cmdStats #hide_history# Stats_hist#id#" style="#displayHistory# text-align: left;">
-                    <span title="Min" style="float:left;">Min : #minHistoryValue# #unite#</span><br/>
-                    <span title="Moy" style="float:left;">Moy : #averageHistoryValue# #unite#</span><br/>
-                    <span title="Max" style="float:left;">Max : #maxHistoryValue# #unite#</span><br/>
-                    <i class="#tendance#"></i> 
-                </div>
+            <div class="cmdStats #hide_history# Stats_hist#id#" style="#displayHistory# text-align: left;">
+                <span title="Min" style="float:left;">Min : #minHistoryValue# #unite#</span><br />
+                <span title="Moy" style="float:left;">Moy : #averageHistoryValue# #unite#</span><br />
+                <span title="Max" style="float:left;">Max : #maxHistoryValue# #unite#</span><br />
+                <i class="#tendance#"></i>
+            </div>
         </div>
-    </div>      
-<script>
-    jeedom.cmd.update['#id#'] = function(_options){
-        // Options de personnalisation avec valeur par defaut
+    </div>
+    <script>
+        jeedom.cmd.update['#id#'] = function(_options) {
+            // Options de personnalisation avec valeur par defaut
             // Paramètre "sizehw" : à déclarer en pixels - 80 maxi
-                var srcImgHeight    = (is_numeric('#sizeh#')) ? parseFloat('#sizeh#') : 90;
-                var srcImgWidth     = (is_numeric('#sizew#')) ? parseFloat('#sizew#') : 90;
-                var srcImgSize      = 'height='+srcImgHeight+'px width='+srcImgWidth+'px';
+            var srcImgHeight = (is_numeric('#sizeh#')) ? parseFloat('#sizeh#') : 90;
+            var srcImgWidth = (is_numeric('#sizew#')) ? parseFloat('#sizew#') : 90;
+            var srcImgSize = 'height=' + srcImgHeight + 'px width=' + srcImgWidth + 'px';
             // Paramétrage des images
-                var srcImgURL       = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/vent/';
-                var srcImgURL_ER    = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
+            var srcImgURL = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/vent/';
+            var srcImgURL_ER = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
             // Variable Taille Texte et marge
-                var srcFontSize     = ('#font_size#'!='#'+'font_size#') ? "#font_size#": "11px";
-                var srcMargSize     = '#marge_size#';
-                var srcFontSizeStat = ('#font_size_hist#'!='#'+'font_size_hist#') ? "#font_size_hist#": "10px";
+            var srcFontSize = ('#font_size#' != '#' + 'font_size#') ? "#font_size#" : "11px";
+            var srcMargSize = '#marge_size#';
+            var srcFontSizeStat = ('#font_size_hist#' != '#' + 'font_size_hist#') ? "#font_size_hist#" : "10px";
             // Valeur du logo
-                var srcImglogo	    = ('#logo#'!='#'+'logo#') ? "#logo#" : "ve_manche2";
-                var srcImglogo_T 	= ('#logo_type#'!='#'+'logo_type#') ? "#logo_type#" : "png";
+            var srcImglogo = ('#logo#' != '#' + 'logo#') ? "#logo#" : "ve_manche2";
+            var srcImglogo_T = ('#logo_type#' != '#' + 'logo_type#') ? "#logo_type#" : "png";
             // Paramètrage du logo ERREUR
-                var srcImglogoER	= ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "er_oups1";
-                var srcImglogoER_T 	= ('#logo_error_type#'!='#'+'logo_error_type#') ? "#logo_error_type#" : "png";
+            var srcImglogoER = ('#logo_error#' != '#' + 'logo_error#') ? "#logo_error#" : "er_oups1";
+            var srcImglogoER_T = ('#logo_error_type#' != '#' + 'logo_error_type#') ? "#logo_error_type#" : "png";
             // Variable Image
-                var srcPictureID;
-        // Update
-                var State       = parseFloat(_options.display_value);
-                if (State >= 0 && State <= 9) {
-                    srcPictureID 	= "0";
-                } else if (State > 9 && State <= 36) {
-                    srcPictureID 	= "45";
-                } else if (State > 36 && State <= 46) {
-                    srcPictureID 	= "90";
-                } else if (State > 46) {
-                    srcPictureID 	= "over";
-                } else {
-                    srcPictureID 	= srcImglogoER;
-                    srcImgURL       = srcImgURL_ER;
-                }  
-        // Update IMG + gestion erreur
-                if (srcPictureID == "error"){
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL + srcPictureID + '.'+srcImglogoER_T+'" '+srcImgSize+'>');
-                } else {
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcImglogo +'_'+ srcPictureID +'.'+ srcImglogo_T+'" '+srcImgSize+'>');
-                }
-            $('.cmd[data-cmd_id=#id#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
-            $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
-        //Taille Texte et marge pour la valeur
-            $('.cmd[data-cmd_id=#id#] .Stats#id#').css('font-size',srcFontSize);
-            $('.cmd[data-cmd_id=#id#] .Stats#id#').css('line-height',srcMargSize);
-        //Taille Texte pour l'historique
-            $('.cmd[data-cmd_id=#id#] .Stats_hist#id#').css('font-size',srcFontSizeStat);
-    }
-    jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});           
-</script>
+            var srcPictureID;
+            // Update
+            var State = parseFloat(_options.display_value);
+            if (State >= 0 && State <= 9) {
+                srcPictureID = "0";
+            } else if (State > 9 && State <= 36) {
+                srcPictureID = "45";
+            } else if (State > 36 && State <= 46) {
+                srcPictureID = "90";
+            } else if (State > 46) {
+                srcPictureID = "over";
+            } else {
+                srcPictureID = srcImglogoER;
+                srcImgURL = srcImgURL_ER;
+            }
+            // Update IMG + gestion erreur
+            if (srcPictureID == "error") {
+                $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="' + srcImgURL + srcPictureID + '.' + srcImglogoER_T + '" ' + srcImgSize + '>');
+            } else {
+                $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="' + srcImgURL + srcImglogo + '_' + srcPictureID + '.' + srcImglogo_T + '" ' + srcImgSize + '>');
+            }
+            $('.cmd[data-cmd_id=#id#] .value#id#').empty().append(_options.display_value + ' ' + '#unite#');
+            $('.cmd[data-cmd_id=#id#]').attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
+            //Taille Texte et marge pour la valeur
+            $('.cmd[data-cmd_id=#id#] .Stats#id#').css('font-size', srcFontSize);
+            $('.cmd[data-cmd_id=#id#] .Stats#id#').css('line-height', srcMargSize);
+            //Taille Texte pour l'historique
+            $('.cmd[data-cmd_id=#id#] .Stats_hist#id#').css('font-size', srcFontSizeStat);
+        }
+        jeedom.cmd.update['#id#']({
+            display_value: '#state#',
+            valueDate: '#valueDate#',
+            collectDate: '#collectDate#',
+            alertLevel: '#alertLevel#'
+        });
+    </script>
 </div>
